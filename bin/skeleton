@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+use RPurinton\{Log, Shutdown};
+use RPurinton\Skeleton\App;
+
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+try {
+    Log::install();
+    Shutdown::install();
+    App::connect();
+} catch (Throwable $e) {
+    fwrite(STDERR, "[FATAL] " . $e->getMessage() . "\n");
+    exit(1);
+}

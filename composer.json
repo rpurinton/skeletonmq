@@ -1,0 +1,27 @@
+{
+    "name": "rpurinton/skeleton",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "RPurinton\\Skeleton\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Russell Purinton",
+            "email": "russell.purinton@gmail.com"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "version": "1.0.0",
+    "require": {
+        "team-reflex/discord-php": "^10.9.0",
+        "rpurinton/shutdown": "^1.0.1",
+        "rpurinton/log": "^1.0"
+    }
+}

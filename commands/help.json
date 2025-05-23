@@ -1,0 +1,22 @@
+{
+    "name": "help",
+    "name_localizations": {
+        "en-US": "help",
+        "pt-BR": "ajuda",
+        "es-ES": "ayuda",
+        "es-419": "ayuda",
+        "zh-CN": "帮助",
+        "ko": "도움말",
+        "sv-SE": "hjälp"
+    },
+    "description": "Get help with the app",
+    "description_localizations": {
+        "en-US": "Get help with the app",
+        "pt-BR": "Obtenha ajuda com o app",
+        "es-ES": "Obtén ayuda con el app",
+        "es-419": "Obtén ayuda com el app",
+        "zh-CN": "获取机器人帮助",
+        "ko": "봇 도움말",
+        "sv-SE": "Få hjälp med appen"
+    }
+}

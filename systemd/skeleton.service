@@ -1,0 +1,15 @@
+[Unit]
+Description=Skeleton App Service
+After=network-online.target
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+EnvironmentFile=/opt/skeleton/.env
+ExecStart=/opt/skeleton/bin/skeleton
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
