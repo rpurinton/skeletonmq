@@ -2,44 +2,36 @@
 
 declare(strict_types=1);
 
-namespace RPurinton\ChatGPT;
+namespace RPurinton\SkeletonMQ;
 
 use React\EventLoop\Loop;
-use RPurinton\{Log, RabbitMQ, OpenAI, MySQL};
-use RPurinton\ChatGPT\Commands;
+use RPurinton\{Log, RabbitMQ, MySQL};
+use RPurinton\SkeletonMQ\Commands;
+use RPurinton\SkeletonMQ\Exceptions\InboxException;
 
 class Inbox
 {
     const QUEUE = 'inbox';
-    const MODEL = 'gpt-4o-mini';
 
-    private string $api_key;
-    private OpenAI $ai;
     private MySQL $sql;
     private RabbitMQ $mq;
     private array $locales;
 
     /**
      * Inbox constructor.
-     * @throws \RuntimeException if required dependencies are not available
+     * @throws InboxException if required dependencies are not available
      */
     public function __construct()
     {
         $this->sql = MySQL::connect();
         if (null === $this->sql) {
-            Log::error('chatgpt-inbox->__construct()', ['error' => 'MySQL connection failed']);
-            throw new \RuntimeException('MySQL connection failed');
+            Log::error('skeletonmq-inbox->__construct()', ['error' => 'MySQL connection failed']);
+            throw new InboxException('MySQL connection failed');
         }
         $this->locales = Locales::get();
         if (null === $this->locales) {
-            Log::error('chatgpt-inbox->__construct()', ['error' => 'Locales not found']);
-            throw new \RuntimeException('Locales not found');
-        }
-        $this->api_key = getenv('OPENAI_API_KEY') ?: throw new \RuntimeException('OPENAI_API_KEY environment variable is not set.');
-        $this->ai = OpenAI::connect($this->api_key);
-        if (null === $this->ai) {
-            Log::error('chatgpt-inbox->__construct()', ['error' => 'OpenAI connection failed']);
-            throw new \RuntimeException('OpenAI connection failed');
+            Log::error('skeletonmq-inbox->__construct()', ['error' => 'Locales not found']);
+            throw new InboxException('Locales not found');
         }
         $this->mq = RabbitMQ::connect(
             self::QUEUE,            // Exchange Name (same as Queue)
@@ -51,7 +43,7 @@ class Inbox
             true,                   // durable
             false,                  // exclusive
         );
-        Log::info('chatgpt-inbox constructed');
+        Log::info('skeletonmq-inbox constructed');
     }
 
     /**
@@ -67,7 +59,7 @@ class Inbox
      */
     public function run(): void
     {
-        Log::notice('chatgpt-inbox initialized and running');
+        Log::notice('skeletonmq-inbox initialized and running');
     }
 
     /**
@@ -79,11 +71,11 @@ class Inbox
     {
         $decoded = json_decode($message, true);
         if (json_last_error() !== JSON_ERROR_NONE) {
-            Log::error('chatgpt-inbox->callback()', ['error' => json_last_error_msg()]);
+            Log::error('skeletonmq-inbox->callback()', ['error' => json_last_error_msg()]);
             return;
         }
         if (!isset($decoded['type'])) {
-            Log::error('chatgpt-inbox->callback()', ['error' => 'Message type not set', 'message' => $decoded]);
+            Log::error('skeletonmq-inbox->callback()', ['error' => 'Message type not set', 'message' => $decoded]);
             return;
         }
         switch ($decoded['type']) {
@@ -94,7 +86,7 @@ class Inbox
                 $this->interaction_handle($decoded['interaction'] ?? []);
                 break;
             default:
-                Log::error('chatgpt-inbox->callback()', ['error' => 'Unknown message type', 'type' => $decoded['type']]);
+                Log::error('skeletonmq-inbox->callback()', ['error' => 'Unknown message type', 'type' => $decoded['type']]);
         }
     }
 
@@ -106,7 +98,7 @@ class Inbox
      */
     public function message_create(string $channel_id, array $messages): void
     {
-        Log::debug('chatgpt-inbox->message_create()', ['channel_id' => $channel_id, 'messages_count' => count($messages)]);
+        Log::debug('skeletonmq-inbox->message_create()', ['channel_id' => $channel_id, 'messages_count' => count($messages)]);
         // TODO: Implement message processing logic
     }
 
@@ -119,13 +111,15 @@ class Inbox
     {
         $command_name = $interaction['data']['name'] ?? null;
         if (null === $command_name) {
-            Log::error('chatgpt-inbox->interaction_handle()', ['error' => 'Command name not set', 'interaction' => $interaction]);
+            Log::error('skeletonmq-inbox->interaction_handle()', ['error' => 'Command name not set', 'interaction' => $interaction]);
             return;
         }
         // Only allow server-related commands in guild channels, not DMs
         $is_dm = empty($interaction['guild_id']);
         $server_commands = [
-            'allow', 'settings', 'dedicate'
+            'allow',
+            'settings',
+            'dedicate'
         ];
         if ($is_dm && in_array($command_name, $server_commands, true)) {
             $reply = [
@@ -146,7 +140,7 @@ class Inbox
             $handler = new $handler_map[$command_name]($this->sql, $this->locales, $interaction);
             $handler->handle();
         } else {
-            Log::error('chatgpt-inbox->interaction_handle()', ['error' => 'Unknown command name', 'command' => $command_name]);
+            Log::error('skeletonmq-inbox->interaction_handle()', ['error' => 'Unknown command name', 'command' => $command_name]);
         }
     }
 

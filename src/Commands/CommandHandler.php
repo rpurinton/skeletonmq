@@ -1,6 +1,6 @@
 <?php
 
-namespace RPurinton\Skeleton\Commands;
+namespace RPurinton\SkeletonMQ\Commands;
 
 use RPurinton\MySQL;
 use Discord\Parts\Interactions\Interaction;

@@ -1,13 +1,13 @@
 [Unit]
-Description=Skeleton App Service
+Description=SkeletonMQ Inbox Service
 After=network-online.target
 StartLimitBurst=5
 StartLimitIntervalSec=60
 
 [Service]
 Type=simple
-EnvironmentFile=/opt/skeleton/.env
-ExecStart=/opt/skeleton/bin/skeleton
+EnvironmentFile=/opt/skeletonmq/.env
+ExecStart=/opt/skeletonmq/bin/skeletonmq-inbox
 Restart=on-failure
 RestartSec=5
 

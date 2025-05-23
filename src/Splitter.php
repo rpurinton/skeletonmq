@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RPurinton\Skeleton;
+namespace RPurinton\SkeletonMQ;
 
 /**
  * Class Splitter

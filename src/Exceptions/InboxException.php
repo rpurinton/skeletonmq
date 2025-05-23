@@ -5,7 +5,7 @@ namespace RPurinton\SkeletonMQ\Exceptions;
 use Exception;
 
 /**
- * Class AppException
+ * Class InboxException
  * Custom exception class for the application.
  */
-class AppException extends Exception {}
+class InboxException extends Exception {}

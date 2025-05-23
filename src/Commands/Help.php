@@ -1,8 +1,8 @@
 <?php
 
-namespace RPurinton\Skeleton\Commands;
+namespace RPurinton\SkeletonMQ\Commands;
 
-use RPurinton\Skeleton\App;
+use RPurinton\SkeletonMQ\App;
 
 class Help extends CommandHandler
 {

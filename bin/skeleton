@@ -2,7 +2,7 @@
 <?php
 
 use RPurinton\{Log, Shutdown};
-use RPurinton\Skeleton\App;
+use RPurinton\SkeletonMQ\App;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 

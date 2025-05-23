@@ -1,0 +1,8 @@
+{
+    "host": "mysql",
+    "user": "skeletonmq",
+    "password": "skeletonmq",
+    "database": "skeletonmq",
+    "waitForConnections": true,
+    "connectionLimit": 10
+}

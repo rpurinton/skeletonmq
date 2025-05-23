@@ -1,4 +1,4 @@
-# Skeleton Discord Bot Template
+# SkeletonMQ Discord Bot Template
 
 This is a reusable template for building Discord bots in PHP.
 
@@ -14,7 +14,7 @@ This is a reusable template for building Discord bots in PHP.
 1. Clone this repository.
 2. Copy `.env.sample` to `.env` and add your Discord bot token.
 3. Add your own commands in the `commands/` folder and handlers in `src/Commands/`.
-4. Run the bot using the provided script in `bin/skeleton`.
+4. Run the bot using the provided script in `bin/skeletonmq`.
 
 ## Customization
 
@@ -25,4 +25,4 @@ This is a reusable template for building Discord bots in PHP.
 ---
 
 This template does **not** include any AI, OpenAI, or ChatGPT features. It is a clean starting point for any Discord bot project.
-# skeletonmq
+# skeletonmqmq

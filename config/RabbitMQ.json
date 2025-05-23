@@ -1,0 +1,8 @@
+{
+    "host": "rabbitmq",
+    "port": 5672,
+    "user": "skeletonmq",
+    "password": "skeletonmq",
+    "vhost": "skeletonmq",
+    "heartbeat": 1000
+}

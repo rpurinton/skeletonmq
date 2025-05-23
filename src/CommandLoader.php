@@ -1,6 +1,6 @@
 <?php
 
-namespace RPurinton\Skeleton;
+namespace RPurinton\SkeletonMQ;
 
 /**
  * Class Commands

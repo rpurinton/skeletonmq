@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2348ae06a2a1dfb5ce9ce13c6f612823",
+    "content-hash": "e4b8edca9682a5e68350edc5961b5ceb",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1796,6 +1796,70 @@
             "time": "2024-06-11T12:45:25+00:00"
         },
         {
+            "name": "rpurinton/bunny",
+            "version": "1.0.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rpurinton/bunny.git",
+                "reference": "ce7671e9ddacdadeb02f8ff255955daa67cad0fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rpurinton/bunny/zipball/ce7671e9ddacdadeb02f8ff255955daa67cad0fd",
+                "reference": "ce7671e9ddacdadeb02f8ff255955daa67cad0fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0",
+                "react/event-loop": "^1.5 || ^0.5 || ^0.4",
+                "react/promise": "^3.2 || ^2.2",
+                "rpurinton/config": "^1.0.25"
+            },
+            "suggest": {
+                "ext-pcntl": "For using synchronous AMQP/RabbitMQ client"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RPurinton\\Bunny\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Kulhan",
+                    "email": "jakub.kulhan@gmail.com"
+                },
+                {
+                    "name": "Russell Purinton",
+                    "email": "russell.purinton@gmail.com"
+                }
+            ],
+            "description": "Performant pure-PHP AMQP (RabbitMQ) sync/async (ReactPHP) library",
+            "keywords": [
+                "AMQP",
+                "bunny",
+                "exchange",
+                "message",
+                "messaging",
+                "queue",
+                "queueing",
+                "rabbit",
+                "rabbitmq",
+                "react",
+                "react-php",
+                "reactphp"
+            ],
+            "support": {
+                "issues": "https://github.com/rpurinton/bunny/issues",
+                "source": "https://github.com/rpurinton/bunny/tree/1.0.21"
+            },
+            "time": "2025-04-10T07:38:11+00:00"
+        },
+        {
             "name": "rpurinton/config",
             "version": "1.0.25",
             "source": {
@@ -1918,6 +1982,92 @@
                 "source": "https://github.com/rpurinton/log/tree/1.0.40"
             },
             "time": "2025-03-28T15:54:39+00:00"
+        },
+        {
+            "name": "rpurinton/mysql",
+            "version": "1.0.37",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rpurinton/mysql.git",
+                "reference": "ee5d170111f3244568d86f102ac63fc030fd9e8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rpurinton/mysql/zipball/ee5d170111f3244568d86f102ac63fc030fd9e8a",
+                "reference": "ee5d170111f3244568d86f102ac63fc030fd9e8a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mysqli": "*",
+                "php": "^8.0",
+                "rpurinton/config": "^1.0.25",
+                "rpurinton/log": "^1.0.39"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RPurinton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Russell Purinton",
+                    "email": "russell.purinton@gmail.com"
+                }
+            ],
+            "description": "A MySQL Library",
+            "support": {
+                "issues": "https://github.com/rpurinton/mysql/issues",
+                "source": "https://github.com/rpurinton/mysql/tree/1.0.37"
+            },
+            "time": "2025-03-21T02:24:32+00:00"
+        },
+        {
+            "name": "rpurinton/rabbitmq",
+            "version": "1.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rpurinton/rabbitmq.git",
+                "reference": "e4b22c2408110cffbfc4c54f29953e68d750d646"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rpurinton/rabbitmq/zipball/e4b22c2408110cffbfc4c54f29953e68d750d646",
+                "reference": "e4b22c2408110cffbfc4c54f29953e68d750d646",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^8.0",
+                "rpurinton/bunny": "^1.0.21",
+                "rpurinton/log": "^1.0.40"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RPurinton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Russell Purinton",
+                    "email": "russell.purinton@gmail.com"
+                }
+            ],
+            "description": "A RabbitMQ Library",
+            "support": {
+                "issues": "https://github.com/rpurinton/rabbitmq/issues",
+                "source": "https://github.com/rpurinton/rabbitmq/tree/1.1.7"
+            },
+            "time": "2025-04-10T07:39:01+00:00"
         },
         {
             "name": "rpurinton/shutdown",
@@ -2621,16 +2771,16 @@
         },
         {
             "name": "team-reflex/discord-php",
-            "version": "v10.9.0",
+            "version": "v10.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/discord-php/DiscordPHP.git",
-                "reference": "c8a0526ba94869539e0cec949e04e3cb2b340c8e"
+                "reference": "5459ff7d7b2e7b860fce926ee8ca0e114028a45a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/discord-php/DiscordPHP/zipball/c8a0526ba94869539e0cec949e04e3cb2b340c8e",
-                "reference": "c8a0526ba94869539e0cec949e04e3cb2b340c8e",
+                "url": "https://api.github.com/repos/discord-php/DiscordPHP/zipball/5459ff7d7b2e7b860fce926ee8ca0e114028a45a",
+                "reference": "5459ff7d7b2e7b860fce926ee8ca0e114028a45a",
                 "shasum": ""
             },
             "require": {
@@ -2693,7 +2843,7 @@
                 "chat": "https://discord.gg/dphp",
                 "docs": "https://discord-php.github.io/DiscordPHP/",
                 "issues": "https://github.com/discord-php/DiscordPHP/issues",
-                "source": "https://github.com/discord-php/DiscordPHP/tree/v10.9.0",
+                "source": "https://github.com/discord-php/DiscordPHP/tree/v10.10.1",
                 "wiki": "https://github.com/discord-php/DiscordPHP/wiki"
             },
             "funding": [
@@ -2710,7 +2860,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-05-20T17:01:59+00:00"
+            "time": "2025-05-22T16:28:32+00:00"
         },
         {
             "name": "trafficcophp/bytebuffer",

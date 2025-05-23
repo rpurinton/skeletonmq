@@ -41,7 +41,7 @@ class App
     {
         $this->commands = CommandLoader::get();
         $this->loop = Loop::get();
-        $this->logger = new Logger('chatgpt-app');
+        $this->logger = new Logger('skeletonmq-app');
         $this->logger->pushHandler(new StreamHandler('php://stdout', Level::Error));
         $this->mq = RabbitMQ::connect(self::QUEUE, 'direct', self::QUEUE, $this->callback(...), $this->loop);
         $token = getenv('DISCORD_APP_TOKEN');
@@ -85,7 +85,7 @@ class App
      */
     protected function init(): void
     {
-        Log::notice('chatgpt-app initialized');
+        Log::notice('skeletonmq-app initialized');
         $this->discord->on(Event::MESSAGE_CREATE, $this->message_create(...));
         $this->discord->updatePresence($this->activity);
         //$this->unregister_cmds();

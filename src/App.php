@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RPurinton\Skeleton;
+namespace RPurinton\SkeletonMQ;
 
 use Discord\{
     Discord,
@@ -20,8 +20,8 @@ use Monolog\Handler\StreamHandler;
 use React\Async;
 use React\EventLoop\{Loop, LoopInterface};
 use RPurinton\Log;
-use RPurinton\Skeleton\CommandLoader;
-use RPurinton\Skeleton\Exceptions\AppException;
+use RPurinton\SkeletonMQ\CommandLoader;
+use RPurinton\SkeletonMQ\Exceptions\AppException;
 
 class App
 {
@@ -37,7 +37,7 @@ class App
      * Extend this as you add more commands.
      */
     private array $handler_map = [
-        'help' => \RPurinton\Skeleton\Commands\Help::class,
+        'help' => \RPurinton\SkeletonMQ\Commands\Help::class,
         // Add more command mappings here as needed
     ];
 
@@ -51,7 +51,7 @@ class App
         $this->locales = Locales::get();
         $this->commands = CommandLoader::get();
         $level = Level::fromName(strtoupper(Log::$logLevel));
-        $this->logger = new Logger('skeleton');
+        $this->logger = new Logger('skeletonmq');
         $this->logger->pushHandler(new StreamHandler('php://stdout', $level));
         $token = getenv('DISCORD_APP_TOKEN');
         if (empty($token) || $token === 'your_discord_bot_token_here') {
